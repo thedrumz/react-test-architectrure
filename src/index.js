@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
+import { store } from "./store/store";
 import I18nProvider from "./components/I18nProvider/I18nProvider";
 import Home from "./components/Home/Home";
 
@@ -9,7 +11,9 @@ import "./styles/index.sass";
 ReactDOM.render(
   <React.StrictMode>
     <I18nProvider defaultLocale="en">
-      <Home />
+      <Provider store={store}>
+        <Home />
+      </Provider>
     </I18nProvider>
   </React.StrictMode>,
   document.getElementById("root")

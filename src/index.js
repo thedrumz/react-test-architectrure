@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Home from "./components/Home/Home";
 import reportWebVitals from "./reportWebVitals";
+import I18nProvider from "./components/I18nProvider/I18nProvider";
+import Home from "./components/Home/Home";
 
 import "./styles/index.sass";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <I18nProvider defaultLocale="en">
+      <Home />
+    </I18nProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

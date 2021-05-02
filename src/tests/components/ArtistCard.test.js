@@ -14,12 +14,20 @@ describe("ArtistCard component", () => {
     expect(artistName).toBeInTheDocument();
   });
 
-  it("Should have a gender", () => {
+  it("Should have a country", () => {
     const artist = generateArtist();
 
-    render(<ArtistCard {...artist} gender={artist.gender} />);
+    render(<ArtistCard {...artist} country={artist.country} />);
 
-    const gender = screen.getByText(artist.gender);
-    expect(gender).toBeInTheDocument();
+    const country = screen.getByText(artist.country);
+    expect(country).toBeInTheDocument();
+  });
+
+  it("Should have a disambiguation", () => {
+    const artist = generateArtist();
+    render(<ArtistCard {...artist} disambiguation={artist.disambiguation} />);
+
+    const disambiguation = screen.getByText(artist.disambiguation);
+    expect(disambiguation).toBeInTheDocument();
   });
 });

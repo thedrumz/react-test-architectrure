@@ -19,7 +19,7 @@ describe("ArtistCard component", () => {
 
     render(<ArtistCard {...artist} country={artist.country} />);
 
-    const country = screen.getByText(artist.country);
+    const country = screen.getByText(`(${artist.country})`);
     expect(country).toBeInTheDocument();
   });
 

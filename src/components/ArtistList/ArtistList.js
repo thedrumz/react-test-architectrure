@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import ArtistCard from "../ArtistCard/ArtistCard";
 import { FormattedMessage } from "react-intl";
 
+import "./ArtistList.sass";
+
 const ArtistList = ({ artists }) => {
   return (
     <div className="artist-list">

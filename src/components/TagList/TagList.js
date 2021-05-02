@@ -1,12 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./TagList.sass";
+
 const TagList = ({ tags }) => {
+  const maxTags = 3;
   if (!tags?.length) return false;
   return (
-    <ul className="tag-list">
-      {tags.map((tag, i) => (
-        <li key={i}>{tag.name}</li>
+    <ul className="o-ui-list o-ui-list--horizontal tag-list">
+      {tags.slice(0, maxTags).map((tag, i) => (
+        <li className="tag-list__item" key={i}>
+          {tag.name}
+        </li>
       ))}
     </ul>
   );

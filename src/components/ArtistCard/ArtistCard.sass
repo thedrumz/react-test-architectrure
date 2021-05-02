@@ -1,0 +1,16 @@
+@import "../../styles/settings/variables"
+@import "../../styles/tools/mixins"
+.artist-card
+  &__header
+    +justify(center, baseline)
+    gap: $spacing-s
+  &__title
+    text-transform: uppercase
+  &__subtitle
+    text-transform: uppercase
+  &__content
+    +justify(center, flex-start)
+    flex: 1 1 auto
+    min-height: 5rem
+  &__footer
+    +justify(center)

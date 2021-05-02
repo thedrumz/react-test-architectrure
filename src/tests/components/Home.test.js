@@ -3,7 +3,7 @@ import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { generateArtist } from "../factories/artist";
 import render from "../tools/customRender";
 import { searchArtistsByName } from "../../services/artistsRepository";
-import Home from "../../components/Home/Home";
+import Home from "../../routes/Home/Home";
 
 import messages from "../../locales/en";
 

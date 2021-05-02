@@ -5,6 +5,21 @@ export const getAllArtists = () => {
   return Promise.all([artist1, artist2]).then(artistMapper);
 };
 
+export const searchArtistsByName = (artistName) => {
+  const encodedArtistName = encodeURI(artistName);
+  return fetch(
+    `http://musicbrainz.org/ws/2/artist?query=${encodedArtistName}&fmt=json`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((artists) => artists.artists || []);
+};
+
 const fetchArtist = (artistId) => {
   return fetch(
     `http://musicbrainz.org/ws/2/artist/${artistId}?fmt=json&inc=recordings`,

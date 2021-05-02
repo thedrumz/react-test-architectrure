@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
-import { getAllArtists } from "../../services/artistsRepository";
-import Artist from "../Artist/Artist";
+import { useSelector } from "react-redux";
+import useFindArtists from "../../hooks/useSearchArtists";
+import {
+  getAllArtists,
+  searchArtistsByName,
+} from "../../services/artistsRepository";
+import ArtistCard from "../ArtistCard/ArtistCard";
+import ArtistList from "../ArtistList/ArtistList";
+import Search from "../Search/Search";
 
 import "./Home.sass";
 
 const Home = () => {
-  const [artists, setArtists] = useState();
-  useEffect(() => {
-    getAllArtists().then((artists) => setArtists(artists));
-  }, []);
+  const findedArtists = useSelector((s) => s.findedArtists);
+  const searchArtists = useFindArtists();
 
   return (
     <div className="home">
       <h1>My favourite bands</h1>
-      {artists?.length &&
-        artists.map((artist) => (
-          <Artist key={artist.id} name={artist.name} gender={artist.gender} />
-        ))}
+      <Search onsubmit={searchArtists} />
+      <ArtistList artists={findedArtists} />
     </div>
   );
 };

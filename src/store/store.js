@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import search from "./reducers/search";
+import findedArtists from "./reducers/findedArtists";
 
 export const store = configureStore({
   reducer: {
-    search,
+    findedArtists,
   },
 });

@@ -1,21 +1,42 @@
 import "@testing-library/jest-dom";
-import { render, screen, waitFor } from "@testing-library/react";
-import { generateArtistList } from "../factories/artist";
-import { getAllArtists } from "../../services/artistsRepository";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { generateArtist } from "../factories/artist";
+import render from "../tools/customRender";
+import { searchArtistsByName } from "../../services/artistsRepository";
 import Home from "../../components/Home/Home";
+
+import messages from "../../locales/en";
 
 jest.mock("../../services/artistsRepository");
 
-describe("Artist component", () => {
-  test("renders hello world heading", async () => {
-    const artist = generateArtistList();
-    getAllArtists.mockResolvedValue([...artist]);
+describe("Home component", () => {
+  it("should return a list of artists when search by artist name", async () => {
+    const artistName = "The Beatles";
+    const artist = generateArtist({ name: artistName });
+    searchArtistsByName.mockResolvedValue([artist]);
 
     render(<Home />);
 
+    const button = screen.getByText(messages["search.button"]);
+    fireEvent.click(button);
+
     await waitFor(() => {
-      const heading = screen.getByRole("heading", { name: artist.name });
-      expect(heading).toBeInTheDocument();
+      expect(screen.getByText(artist.name)).toBeInTheDocument();
+    });
+  });
+
+  it("shows a not found message when search has no results", async () => {
+    searchArtistsByName.mockResolvedValue([]);
+
+    render(<Home />);
+
+    const button = screen.getByText(messages["search.button"]);
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole("status", messages["search.no-results"])
+      ).toBeInTheDocument();
     });
   });
 });

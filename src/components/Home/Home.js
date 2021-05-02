@@ -1,11 +1,5 @@
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useFindArtists from "../../hooks/useSearchArtists";
-import {
-  getAllArtists,
-  searchArtistsByName,
-} from "../../services/artistsRepository";
-import ArtistCard from "../ArtistCard/ArtistCard";
 import ArtistList from "../ArtistList/ArtistList";
 import Search from "../Search/Search";
 

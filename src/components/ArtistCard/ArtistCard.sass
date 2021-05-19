@@ -2,8 +2,17 @@
 @import "../../styles/tools/mixins"
 .artist-card
   &__header
+    position: relative
     +justify(center, baseline)
     gap: $spacing-s
+  &__favourite
+    position: absolute
+    top: 0
+    right: 0
+    font-size: $fs-icons
+    &:hover
+      color: $text-color-secondary
+      cursor: pointer
   &__title
     text-transform: uppercase
   &__subtitle

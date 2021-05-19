@@ -10,6 +10,7 @@ const ArtistCard = ({ name, country, disambiguation, tags }) => {
       <header className="artist-card__header">
         <h2 className="artist-card__title">{name}</h2>
         {country && <span className="artist-card__subtitle">({country})</span>}
+        <i className="artist-card__favourite icon-heart"></i>
       </header>
       <section className="artist-card__content">
         <p>{disambiguation}</p>

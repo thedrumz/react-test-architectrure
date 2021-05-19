@@ -9,10 +9,13 @@ The project is very simple, is only a finder to search for a musical bands. Why 
 ## What can you find here
 
 I'm trying to apply some practices from clean architectures and patterns commonly used in back-end projects, but not often in front-end. The main goal is to decouple layers to make an easy testeable and scalable architecture, using services, repositories, mocks, test factories (or Object Mothers), etc...
+To make it more realistic I added i18n and Redux store. It made me think about how to deal with this on my tests from the user perspective (using Testing Library approach)
+I also added some basic styles using SASS, focusing on a good SASS architecture
 
 ## How to run
 
 The application is based on CRA template, so, you can run it very easily cloning the repo and executing `yarn` to install dependencies and `yarn start` to run it
+You can run tests using `yarn test`
 
 ### Contribute
 
